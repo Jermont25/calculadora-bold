@@ -6,20 +6,20 @@
 		<title>Calculadora</title>
     <link rel="stylesheet" href="./styles_calculadora.css">
 </head>
-    <h1 class="titulo">Calculadora de comisión Bold</h1>
+    <h1 class="titulo">Calculadora de comisión</h1>
   
 	<body>
     <div align="center">
 
       <section id="seleccionar-valor-venta">
 
-        <h2>Ingresa el valor de la venta</h2>
+        <h2>Ingresa el valor a calcular</h2>
             
           <input type="number" id="valor-venta" placeholder="$" class="ingresar-venta">
 
       </section>
 
-        <h2 id="titulo-tarifa">Elige la tarifa de Bold</h2>
+        <h2 id="titulo-tarifa">Elige la tarifa</h2>
 
       <section id="seleccionar-tarifa">
             
@@ -34,11 +34,11 @@
               
       </section>
 
-          <h5 id="titulo-diferencia-tarifa">(Recuerda que las tarifas de 2.69% y 2.59% se les sumará $400)</h5>
+          <h5 id="titulo-diferencia-tarifa">(Recuerda que las tarifas de 2.29%, 2.19% y 2.09% se les sumará $300)</h5>
       
       <section id="seleccionar-impuesto-reterenta">
 
-        <h2 id="titulo-impuesto">Selecciona el impuesto de ReteRenta</h2><h4>(Si no aplica no selecciones datos)</h4>
+        <h2 id="titulo-impuesto">Selecciona el impuesto de ReteRenta</h2><h4>(Si no aplica no selecciones el botón)</h4>
         
             <input type="radio" name="impuesto" id="rete-renta"/>
             <label for="rete-renta" class="boton-tarifa">1.5%</label>
@@ -47,7 +47,7 @@
 
       <section id="seleccionar-impuesto-reteica">
 
-          <h2 id="titulo-impuesto">Ingresa el porcentaje de ReteICA</h2> <h4>(Si no aplica no ingreses datos)</h4>
+          <h2 id="titulo-impuesto">Ingresa el porcentaje de ReteICA</h2> <h4>(Si no aplica no ingreses valores)</h4>
           
             <input type="number" id="rete-ica" placeholder="%" class="ingresar-reteica">
             
@@ -73,6 +73,10 @@
     </div>
 
     <script src="./js/codigo_calculadora.js"> </script>
+
+    <footer>
+      <p>Derechos de autor &copy; 2023 Jerson Uribe Montenegro</p>
+    </footer>
 
   </body>
 
