@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@300&display=swap');
+
+body{
+    background: linear-gradient(#ee424e, #121e6c);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #121e6c;
+
+}
+
+div{
+    background-color: white;
+    width: 600px;
+    height: 800px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.titulo{
+    color:#ffffff;
+    font-size: 40px;
+    font-family: 'Kanit', sans-serif;
+    
+    
+}
+
+.ingresar-venta{
+    padding: 10px 20px;
+    border: 0px;
+    border-radius: 10px;
+    background-color: #f1f2f6;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    margin: -10px 0px 14px 0px;
+    text-align: center;
+
+}
+
+#seleccionar-tarifa{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: -15px 0px -10px 0px;
+    
+}
+
+.boton-tarifa{
+    width: 100px;
+    height: 60px;
+    color: #121e6c;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 2px solid #121e6c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+    
+    
+
+.boton-tarifa:hover{
+    background: linear-gradient(298deg,#ee424e85, #121e6c9c);
+}
+
+input:checked + label{
+    background: linear-gradient(298deg,#ee424e85, #121e6c9c);
+    color: #ffffff;
+}
+
+#tarifa-estandard, #tarifa-plana1, #tarifa-plana2, #rete-renta{
+    display: none;
+}
+
+#seleccionar-impuesto-reterenta{
+    margin: 12px 0px 2px 0px;
+    
+}
+
+.ingresar-reteica{
+    padding: 10px 10px;
+    border: 0px;
+    border-radius: 10px;
+    background-color: #f1f2f6;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    width: 80px;
+    box-sizing: border-box;
+}
+
+#seleccionar-impuesto-reteica{
+    margin: 20px 0px -24px 0px;
+     
+}
+
+#titulo-impuesto{
+    margin: 0px 0px -12px 0px;
+}
+
+.boton{
+    color: white;
+    width: 180px;
+    height: 72px;
+    background-color: #ee424e;
+    border-radius: 30px;
+    margin: 50px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#resultado-programa{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    margin: 20px;
+}
+
+@media (max-width:360px){
+    .titulo{
+        font-size: 23px;
+    }
+
+    div{
+        font-size: 12px;
+    }
+
+    .boton{
+        width: 150px;
+        height: 50px;
+        font-size: 12px;
+    }
+
+    .ingresar-venta{
+        font-size: 20px;
+    }
+
+    #resultado-programa{
+        font-size: 14px;
+        margin: 133px;
+    }
+}
