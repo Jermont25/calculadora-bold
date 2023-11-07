@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@300&display=swap');
-
-body{
+body {
     background: linear-gradient(#ee424e, #121e6c);
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,13 +6,13 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: montserrat, Arial,Helvetica,sans-serif;
     color: #121e6c;
 
 
 }
 
-div{
+div {
     background-color: white;
     width: 600px;
     height: 800px;
@@ -26,36 +24,39 @@ div{
     
 }
 
-
-.titulo{
-    color:#ffffff;
-    font-size: 40px;
-    font-family: 'Kanit', sans-serif;
-    
-    
+h5 {
+    font-weight: normal;
 }
 
-.ingresar-venta{
+
+.titulo {
+    color:#ffffff;
+    font-size: 40px;
+    font-weight: bold;  
+}
+
+.ingresar-venta {
     padding: 10px 20px;
     border: 0px;
     border-radius: 10px;
     background-color: #f1f2f6;
     font-size: 25px;
-    font-family: 'Montserrat', sans-serif;
     margin: -10px 0px 14px 0px;
     text-align: center;
+    font-weight: normal;
 
 }
 
-#seleccionar-tarifa{
+#seleccionar-tarifa {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: -15px 0px -10px 0px;
+    font-weight: normal;
     
 }
 
-.boton-tarifa{
+.boton-tarifa {
     width: 100px;
     height: 60px;
     color: #121e6c;
@@ -67,17 +68,17 @@ div{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: 'Poppins', sans-serif;
     font-size: 18px;
+    font-weight: normal;
 }
     
     
 
-.boton-tarifa:hover{
+.boton-tarifa:hover {
     background: linear-gradient(298deg,#ee424e85, #121e6c9c);
 }
 
-input:checked + label{
+input:checked + label {
     background: linear-gradient(298deg,#ee424e85, #121e6c9c);
     color: #ffffff;
 }
@@ -86,32 +87,44 @@ input:checked + label{
     display: none;
 }
 
-#seleccionar-impuesto-reterenta{
+#seleccionar-impuesto-reterenta {
     margin: 12px 0px 2px 0px;
     
 }
 
-.ingresar-reteica{
+#seleccionar-impuesto-reterenta h4 {
+    font-weight: normal;
+    font-size: 13px;
+    
+}
+
+.ingresar-reteica {
     padding: 10px 10px;
     border: 0px;
     border-radius: 10px;
     background-color: #f1f2f6;
     font-size: 20px;
-    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
     width: 80px;
     box-sizing: border-box;
 }
 
-#seleccionar-impuesto-reteica{
+#seleccionar-impuesto-reteica {
     margin: 20px 0px -24px 0px;
      
 }
 
-#titulo-impuesto{
+#seleccionar-impuesto-reteica h4{
+    font-weight: normal;
+    font-size: 13px;
+     
+}
+
+#titulo-impuesto {
     margin: 0px 0px -12px 0px;
 }
 
-.boton{
+.boton {
     color: white;
     width: 180px;
     height: 72px;
@@ -119,11 +132,11 @@ input:checked + label{
     border-radius: 30px;
     margin: 50px;
     font-size: 20px;
-    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
 }
 
-#resultado-programa{
-    font-family: 'Poppins', sans-serif;
+#resultado-programa {
+    font-weight: normal;
     font-size: 20px;
     margin: 20px;
 }
@@ -134,7 +147,7 @@ footer {
 }
 
 @media (max-width:360px){
-    .titulo{
+    .titulo {
         font-size: 23px;
     }
 
@@ -142,17 +155,17 @@ footer {
         font-size: 12px;
     }
 
-    .boton{
+    .boton {
         width: 150px;
         height: 50px;
         font-size: 12px;
     }
 
-    .ingresar-venta{
+    .ingresar-venta {
         font-size: 20px;
     }
 
-    #resultado-programa{
+    #resultado-programa {
         font-size: 14px;
         margin: 133px;
     }

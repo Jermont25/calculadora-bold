@@ -55,7 +55,7 @@ function iniciar_programa(){
 
   tarifario.forEach((tarifa) => {
     opcion_tarifa = `<input type="radio" name="tarifa" id=${tarifa.nombre} />
-    <label for=${tarifa.nombre} class="boton-tarifa">${tarifa.valor}</label>`
+    <label for=${tarifa.nombre} class="boton-tarifa">${tarifa.valor}%</label>`
 
     section_tarifa.innerHTML += opcion_tarifa;
   })
@@ -204,7 +204,7 @@ rete_ica = document.getElementById("rete-ica").value;
     p2.textContent= `Valor de tus ventas: $${valor_venta}`
     p3.textContent= `Tarifa Bold del ${eleccion}% = -$${valor_tarifa}`
     p4.textContent= `ReteRenta del ${tarifa_reterenta.valor}% = -$${valor_reterenta}`
-    p5.textContent= `ReteICA del (${rete_ica}%) = $${valor_reteica}`
+    p5.textContent= `ReteICA del (${rete_ica}%) = -$${valor_reteica}`
     p6.textContent= `Total a transferir a tu cuenta bancaria: $${resultado}`
     
 
