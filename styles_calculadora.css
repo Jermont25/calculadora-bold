@@ -1,7 +1,6 @@
 body {
     background: linear-gradient(#ee424e, #121e6c);
     background-repeat: no-repeat;
-    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;

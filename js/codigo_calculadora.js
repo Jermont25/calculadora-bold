@@ -78,7 +78,6 @@ function seleccion_tarifa(){
 valor_venta = document.getElementById("valor-venta").value;
 rete_renta = document.getElementById("rete-renta");
 rete_ica = document.getElementById("rete-ica").value;
-
     if (tarifa1.checked && rete_renta.checked){
 
         operacion = (valor_venta * tarifa_normal.valor / 100) + (valor_venta * tarifa_reterenta.valor / 100) + (valor_venta * rete_ica / 100);
@@ -89,7 +88,6 @@ rete_ica = document.getElementById("rete-ica").value;
         let valor_reterenta = valor_venta * tarifa_reterenta.valor / 100;
         let valor_reteica = valor_venta * rete_ica / 100;
         mensaje_resultado(eleccion, valor_tarifa, valor_reterenta, valor_reteica);
-        
       
     } else if (tarifa1.checked){
 
@@ -99,7 +97,7 @@ rete_ica = document.getElementById("rete-ica").value;
       eleccion = tarifa_normal.valor;
       let valor_tarifa = valor_venta * tarifa_normal.valor / 100;
       let valor_reterenta = 0;
-      let valor_reteica = 0;
+      let valor_reteica = valor_venta * rete_ica / 100;
       mensaje_resultado(eleccion, valor_tarifa, valor_reterenta, valor_reteica);
 
     } else if (tarifa2.checked && rete_renta.checked){
@@ -121,7 +119,7 @@ rete_ica = document.getElementById("rete-ica").value;
       eleccion = tarifa_especial1.valor;
       let valor_tarifa = valor_venta * tarifa_especial1.valor / 100;
       let valor_reterenta = 0;
-      let valor_reteica = 0;
+      let valor_reteica = valor_venta * rete_ica / 100;
       mensaje_resultado(eleccion, valor_tarifa, valor_reterenta, valor_reteica);
 
     } else if (tarifa3.checked && rete_renta.checked){
@@ -143,7 +141,7 @@ rete_ica = document.getElementById("rete-ica").value;
       eleccion = tarifa_especial2.valor;
       let valor_tarifa = valor_venta * tarifa_especial2.valor / 100;
       let valor_reterenta = 0;
-      let valor_reteica = 0;
+      let valor_reteica = valor_venta * rete_ica / 100;
       mensaje_resultado(eleccion, valor_tarifa, valor_reterenta, valor_reteica);
 
     } else if (tarifa4.checked && rete_renta.checked){
@@ -164,7 +162,7 @@ rete_ica = document.getElementById("rete-ica").value;
       eleccion = tarifa_especial3.valor;
       let valor_tarifa = valor_venta * tarifa_especial3.valor / 100;
       let valor_reterenta = 0;
-      let valor_reteica = 0;
+      let valor_reteica = valor_venta * rete_ica / 100;
       mensaje_resultado(eleccion, valor_tarifa, valor_reterenta, valor_reteica);
     
     } else{
@@ -202,7 +200,7 @@ rete_ica = document.getElementById("rete-ica").value;
     p.textContent = "De acuerdo al valor de tus ventas, tarifa e impuestos vigentes, te comento que las deducciones se realizaron así:"
 
     p2.textContent= `Valor de tus ventas: $${valor_venta}`
-    p3.textContent= `Tarifa Bold del ${eleccion}% = -$${valor_tarifa}`
+    p3.textContent= `Tarifa Bold del ${eleccion}% = -$${valor_tarifa.toFixed(2)}`
     p4.textContent= `ReteRenta del ${tarifa_reterenta.valor}% = -$${valor_reterenta}`
     p5.textContent= `ReteICA del (${rete_ica}%) = -$${valor_reteica}`
     p6.textContent= `Total a transferir a tu cuenta bancaria: $${resultado}`
