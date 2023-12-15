@@ -1,2 +1,2 @@
 # calculadora-bold
-Este proyecto se trata de una calculadora de tarifas de la empresa en la que trabajo actualmente, con el fin de mejorar la gestión
+Este proyecto se trata de una calculadora de tarifas de la empresa en la que trabajo actualmente, con el fin de mejorar la gestión y rápidez en la solución de casos.
