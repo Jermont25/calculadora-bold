@@ -11,7 +11,8 @@ let section_impuesto_reteica = document.getElementById("seleccionar-impuesto-ret
 let titulo_tarifa = document.getElementById("titulo-tarifa");
 let boton_calcular = document.getElementById("boton-calcular");
 let diferencia_tarifa = document.getElementById("titulo-diferencia-tarifa");
-
+let ventaspseNequi = document.getElementById("ventas-pseNequi");
+let valorIva = document.getElementById("valor-iva");
 
 let tarifario = [];
 let tarifas = [];

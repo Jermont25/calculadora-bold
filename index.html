@@ -6,31 +6,28 @@
 		<title>Calculadora</title>
     <link rel="stylesheet" href="./styles_calculadora.css">
 </head>
-    <h1 class="titulo">Calculadora de comisión</h1>
-  
+
+<header>
+  <h1 class="titulo">Calculadora de comisión</h1>
+  <nav>
+    <ul>
+      <li>
+        <a href="#facturacion">Calculadora de IVA</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 	<body>
     <div align="center">
-
       <section id="seleccionar-valor-venta">
 
         <h2>Ingresa el valor a calcular</h2>
-            
-          <input type="number" id="valor-venta" placeholder="$" class="ingresar-venta">
-
+        <input type="number" id="valor-venta" placeholder="$" class="ingresar-venta">
       </section>
 
         <h2 id="titulo-tarifa">Elige la tarifa</h2>
 
       <section id="seleccionar-tarifa">
-            
-              <!-- <input type="radio" name="tarifa" id="tarifa-estandard"/>
-              <label for="tarifa-estandard" class="boton-tarifa">2.99%</label>
-              
-              <input type="radio" name="tarifa" id="tarifa-plana1"/>
-              <label  for="tarifa-plana1" class="boton-tarifa">2.69%</label>
-              
-              <input type="radio" name="tarifa" id="tarifa-plana2"/>
-              <label for="tarifa-plana2" class="boton-tarifa">2.59%</label> -->
               
       </section>
 
@@ -71,6 +68,13 @@
       </section>
 
     </div>
+
+    <section id="facturacion" class="">
+
+      <input type="number" id="ventas-pseNequi" placeholder="$" class="ingresar-venta">
+      <input type="number" id="valor-iva" placeholder="$" class="ingresar-venta">
+
+    </section>
 
     <script src="./js/codigo_calculadora.js"> </script>
 
