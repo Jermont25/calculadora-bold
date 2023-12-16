@@ -1,21 +1,20 @@
-let section_resultado = document.getElementById("resultado-programa");
-let section_reiniciar = document.getElementById("reiniciar");
-let boton_tarifa = document.getElementById("boton-calcular");
-let boton_reiniciar = document.getElementById("boton-reiniciar");
+const section_resultado = document.getElementById("resultado-programa");
+const section_reiniciar = document.getElementById("reiniciar");
+const boton_tarifa = document.getElementById("boton-calcular");
+const boton_reiniciar = document.getElementById("boton-reiniciar-tarifa");
+const boton_reiniciar_iva = document.getElementById("boton-reiniciar-iva");
+const boton_iva = document.getElementById("boton-iva");
 
 
-let section_venta = document.getElementById("seleccionar-valor-venta");
-let section_tarifa = document.getElementById("seleccionar-tarifa");
-let section_impuesto_reterenta = document.getElementById("seleccionar-impuesto-reterenta");
-let section_impuesto_reteica = document.getElementById("seleccionar-impuesto-reteica");
-let titulo_tarifa = document.getElementById("titulo-tarifa");
-let boton_calcular = document.getElementById("boton-calcular");
-let diferencia_tarifa = document.getElementById("titulo-diferencia-tarifa");
-let ventaspseNequi = document.getElementById("ventas-pseNequi");
-let valorIva = document.getElementById("valor-iva");
+const section_venta = document.getElementById("seleccionar-valor-venta");
+const section_tarifa = document.getElementById("seleccionar-tarifa");
+const section_impuesto_reterenta = document.getElementById("seleccionar-impuesto-reterenta");
+const section_impuesto_reteica = document.getElementById("seleccionar-impuesto-reteica");
+const titulo_tarifa = document.getElementById("titulo-tarifa");
+const boton_calcular = document.getElementById("boton-calcular");
+const diferencia_tarifa = document.getElementById("titulo-diferencia-tarifa");
 
 let tarifario = [];
-let tarifas = [];
 let opcion_tarifa;
 let mensajes;
 let tarifa1;
@@ -45,7 +44,7 @@ let tarifa_especial1 = new Calculadora("tarifa-plana1", 2.29);
 let tarifa_especial2 = new Calculadora("tarifa-plana2", 2.19);
 let tarifa_especial3 = new Calculadora("tarifa-plana3", 2.09);
 let tarifa_reterenta = new Calculadora("rete-renta", 1.5);
-
+let iva = new Calculadora("iva-valor", 0.19);
 
 tarifario.push(tarifa_normal, tarifa_especial1, tarifa_especial2, tarifa_especial3);
 
@@ -66,12 +65,10 @@ function iniciar_programa(){
   tarifa3 = document.getElementById("tarifa-plana2");
   tarifa4 = document.getElementById("tarifa-plana3");
 
-
-  tarifas.push(tarifa1, tarifa2, tarifa3, tarifa4);
-
-  
   boton_tarifa.addEventListener("click", seleccion_tarifa);
   boton_reiniciar.addEventListener("click", reiniciar_calculadora);
+  boton_reiniciar_iva.addEventListener("click", reiniciar_calculadora);
+  boton_iva.addEventListener("click", ivaCalculador);
 }
 
 
@@ -188,33 +185,37 @@ rete_ica = document.getElementById("rete-ica").value;
 
   function mensaje_resultado(eleccion, valor_tarifa, valor_reterenta, valor_reteica){
 
-    let h2 = document.createElement('h2');
-    let p = document.createElement('p');
-    let p2 = document.createElement('p');
-    let p3 = document.createElement('p');
-    let p4 = document.createElement('p');
-    let p5 = document.createElement('p');
-    let p6 = document.createElement('p');
+    let message = `<h2>Resultado con script incluido:</h2>
 
+    <p>De acuerdo al valor de tus ventas, tarifa e impuestos vigentes, te comento que las deducciones se realizaron así:</p>
+    <p>Valor de tus ventas: <strong>$${valor_venta}</strong></p>
+    <p>Tarifa Bold del ${eleccion}% = <strong>-$${valor_tarifa.toFixed(2)}</strong></p>
+    <p>ReteRenta del ${tarifa_reterenta.valor}% = <strong>-$${valor_reterenta}</strong></p>
+    <p>ReteICA del ${rete_ica}% = <strong>-$${valor_reteica}</strong></p>
+    <p>Total a transferir a tu cuenta bancaria: <strong>$${resultado.toLocaleString("es-CO")}</strong></p>`
 
-    h2.textContent = "Resultado con script incluido:";
-    p.textContent = "De acuerdo al valor de tus ventas, tarifa e impuestos vigentes, te comento que las deducciones se realizaron así:"
+    section_resultado.innerHTML = message;
+}
 
-    p2.textContent= `Valor de tus ventas: $${valor_venta}`
-    p3.textContent= `Tarifa Bold del ${eleccion}% = -$${valor_tarifa.toFixed(2)}`
-    p4.textContent= `ReteRenta del ${tarifa_reterenta.valor}% = -$${valor_reterenta}`
-    p5.textContent= `ReteICA del (${rete_ica}%) = -$${valor_reteica}`
-    p6.textContent= `Total a transferir a tu cuenta bancaria: $${resultado}`
-    
+function ivaCalculador() {
+    let ventaspseNequi = document.getElementById("ventas-pseNequi").value;
+    let valorIva = document.getElementById("valor-iva").value;
+    let contenedor_respuesta = document.getElementById("contenedor-respuesta");
 
-    section_resultado.appendChild(h2);
-    section_resultado.appendChild(p);
-    section_resultado.appendChild(p2);
-    section_resultado.appendChild(p3);
-    section_resultado.appendChild(p4);
-    section_resultado.appendChild(p5);
-    section_resultado.appendChild(p6);
-  
+    const pago_terceros = ventaspseNequi - (valorIva / iva.valor);
+    const base_gravable = ventaspseNequi - pago_terceros;
+    const iva_resultado = (ventaspseNequi - pago_terceros) * iva.valor;
+
+    let message = `
+      <p>Pago a terceros sobre el valor ingresado: <strong>$${pago_terceros.toFixed(2)}</strong></p>
+      <p>Base gravable, luego del pago a terceros: <strong>$${base_gravable.toFixed(2)}</strong></p>
+      <p>IVA de la base gravable: <strong>$${iva_resultado.toFixed(2)}</strong></p>
+      <h2>¡IMPORTANTE!</h2>
+      <p>La operación antes realizada solamente encuentra la incognita que se tiene sobre el pago
+      a terceros, de las ventas por PSE y Nequi, despejando la variable X con una formula matemática, pero es
+      importante revisar los valores en los <strong>documentos oficiales</strong> emitidos por <strong>Bold</strong>, antes de enviar respuesta al cliente. </p>`
+
+    contenedor_respuesta.innerHTML = message;
 }
     
 

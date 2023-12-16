@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
@@ -17,10 +18,10 @@
     </ul>
   </nav>
 </header>
+
 	<body>
     <div align="center">
       <section id="seleccionar-valor-venta">
-
         <h2>Ingresa el valor a calcular</h2>
         <input type="number" id="valor-venta" placeholder="$" class="ingresar-venta">
       </section>
@@ -28,51 +29,54 @@
         <h2 id="titulo-tarifa">Elige la tarifa</h2>
 
       <section id="seleccionar-tarifa">
-              
-      </section>
 
-          <h5 id="titulo-diferencia-tarifa">(Recuerda que las tarifas de 2.29%, 2.19% y 2.09% se les sumará $300)</h5>
-      
+      </section>
+        <h4 id="titulo-diferencia-tarifa">(Recuerda que las tarifas de 2.29%, 2.19% y 2.09% se les sumará $300)</h4>
+
       <section id="seleccionar-impuesto-reterenta">
 
         <h2 id="titulo-impuesto">¿Aplica para cobro de ReteRenta?</h2><h4>(Si no aplica no selecciones el botón)</h4>
-        
             <input type="radio" name="impuesto" id="rete-renta"/>
             <label for="rete-renta" class="boton-tarifa">SI</label>
             
       </section>
 
       <section id="seleccionar-impuesto-reteica">
-
           <h2 id="titulo-impuesto">Ingresa el porcentaje de ReteICA</h2> <h4>(Si no aplica no ingreses valores)</h4>
-          
             <input type="number" id="rete-ica" placeholder="%" class="ingresar-reteica">
-            
       </section>
          
-        <button id="boton-calcular" class="boton">CALCULAR</button>
+        <button id="boton-calcular" class="boton-calcular">Calcular</button>
 
       <section id="resultado-programa">
 
-          <!-- <h2>Resultado y script:</h2>
-
-            <p>De acuerdo al valor de tus ventas, tarifa e impuestos vigentes, te comento que las deducciones se realizaron así:
-
-              Valor ventas: $1000, -Tarifa Bold (2.99%),-$ -ReteRenta (1.5%), - ReteICA () = $955.1, que se transfirieron a tu cuenta bancaria registrada.</p> -->
       </section>
 
       <section id="reiniciar">
-
-          <button id="boton-reiniciar" class="boton">HACER NUEVA SIMULACIÓN</button>
-
+          <button id="boton-reiniciar-tarifa" class="boton-reiniciar">Reintentar</button>
       </section>
 
     </div>
 
     <section id="facturacion" class="">
 
+      <h2>Ingresa el valor de las ventas</h2>
+      <h4>(Este valor lo puedes encontrar en el reporte de ventas)</h4>
       <input type="number" id="ventas-pseNequi" placeholder="$" class="ingresar-venta">
+
+      <h2>Ingresa el valor del IVA de la factura</h2>
+      <h4>(Este valor lo encuentras en la factura de comisión)</h4>
       <input type="number" id="valor-iva" placeholder="$" class="ingresar-venta">
+
+      <div id="contenedor-respuesta">
+
+      </div>
+
+      <div id="botones">
+        <button id="boton-iva" class="boton-calcular">Calcular</button>
+        <button id="boton-reiniciar-iva" class="boton-reiniciar">Reintentar</button>
+      </div>
+      
 
     </section>
 
