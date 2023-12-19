@@ -1,22 +1,27 @@
-const section_resultado = document.getElementById("resultado-programa");
-const section_reiniciar = document.getElementById("reiniciar");
-const boton_tarifa = document.getElementById("boton-calcular");
-const boton_reiniciar = document.getElementById("boton-reiniciar-tarifa");
-const boton_reiniciar_iva = document.getElementById("boton-reiniciar-iva");
-const boton_iva = document.getElementById("boton-iva");
-
-
 const section_venta = document.getElementById("seleccionar-valor-venta");
 const section_tarifa = document.getElementById("seleccionar-tarifa");
 const section_impuesto_reterenta = document.getElementById("seleccionar-impuesto-reterenta");
 const section_impuesto_reteica = document.getElementById("seleccionar-impuesto-reteica");
 const titulo_tarifa = document.getElementById("titulo-tarifa");
 const boton_calcular = document.getElementById("boton-calcular");
+const boton_tarifa = document.getElementById("boton-calcular");
+const section_reiniciar = document.getElementById("reiniciar");
+const boton_reiniciar = document.getElementById("boton-reiniciar-tarifa");
 const diferencia_tarifa = document.getElementById("titulo-diferencia-tarifa");
+const section_resultado = document.getElementById("resultado-programa");
+
+
+const boton_reiniciar_iva = document.getElementById("boton-reiniciar-iva");
+const boton_iva = document.getElementById("boton-iva");
+const contenedor_respuesta = document.getElementById("contenedor-respuesta");
+const section_comision = document.getElementById("section-comision");
+const section_iva = document.getElementById("section-iva");
+const script = document.getElementById("template");
+const link_template = document.getElementById("link-template");
+const generateScript = document.getElementById("generate-template");
 
 let tarifario = [];
 let opcion_tarifa;
-let mensajes;
 let tarifa1;
 let tarifa2;
 let tarifa3;
@@ -28,8 +33,13 @@ let rete_ica;
 let operacion;
 let resultado;
 let eleccion;
+let mensajes;
 
-
+let ventaspseNequi;
+let valorIva;
+let pago_terceros;
+let base_gravable;
+let iva_resultado;
 
 
 class Calculadora {
@@ -52,6 +62,8 @@ function iniciar_programa(){
 
   section_resultado.style.display = "none";
   section_reiniciar.style.display = "none";
+  script.style.display = "none";
+  link_template.style.display = "none";
 
   tarifario.forEach((tarifa) => {
     opcion_tarifa = `<input type="radio" name="tarifa" id=${tarifa.nombre} />
@@ -69,6 +81,8 @@ function iniciar_programa(){
   boton_reiniciar.addEventListener("click", reiniciar_calculadora);
   boton_reiniciar_iva.addEventListener("click", reiniciar_calculadora);
   boton_iva.addEventListener("click", ivaCalculador);
+  generateScript.addEventListener('click', templateMessage);
+
 }
 
 
@@ -198,13 +212,12 @@ rete_ica = document.getElementById("rete-ica").value;
 }
 
 function ivaCalculador() {
-    let ventaspseNequi = document.getElementById("ventas-pseNequi").value;
-    let valorIva = document.getElementById("valor-iva").value;
-    let contenedor_respuesta = document.getElementById("contenedor-respuesta");
-
-    const pago_terceros = ventaspseNequi - (valorIva / iva.valor);
-    const base_gravable = ventaspseNequi - pago_terceros;
-    const iva_resultado = (ventaspseNequi - pago_terceros) * iva.valor;
+    ventaspseNequi = document.getElementById("ventas-pseNequi").value;
+    valorIva = document.getElementById("valor-iva").value;
+    
+    pago_terceros = ventaspseNequi - (valorIva / iva.valor);
+    base_gravable = ventaspseNequi - pago_terceros;
+    iva_resultado = (ventaspseNequi - pago_terceros) * iva.valor;
 
     let message = `
       <p>Pago a terceros sobre el valor ingresado: <strong>$${pago_terceros.toFixed(2)}</strong></p>
@@ -216,8 +229,39 @@ function ivaCalculador() {
       importante revisar los valores en los <strong>documentos oficiales</strong> emitidos por <strong>Bold</strong>, antes de enviar respuesta al cliente. </p>`
 
     contenedor_respuesta.innerHTML = message;
+
+    link_template.style.display = "block";
 }
+
+function templateMessage () {
+
+  section_comision.style.display = "none";
+  section_iva.style.display = "none";
+  contenedor_respuesta.style.display = "none";
+  boton_iva.style.display = "none";
+  generateScript.style.display = "none";
+  script.style.display = "block";
+
+
+  let messageScript = ` <h2><strong>Script:</strong></h2>
     
+    <p>Te confirmo como se calcula el IVA sobre la factura de comisión transaccional:</P>
+
+    <p>Las comisiones que cobra Bold en sus canales de pago a través del datáfono y el link de pago con tarjeta, serán tratadas como excluidas, por tratarse de comisiones por la utilización de tarjetas de crédito y débito, es decir, no se deduce IVA sobre dichas transacciones.
+    Las comisiones que cobra Bold por ventas por link de pago, a través de PSE, y por medio de Nequi, serán gravadas con IVA.</p>
+   
+   <p>En este orden de ideas y tomando como referencia las ventas del mes de (insertar mes), la factura se deduce de la siguiente manera:</p>
+       <ul>
+           <li>Comisión Bold: <strong>$${ventaspseNequi}</strong></li>
+           <li>Pagos a terceros: <strong>$${pago_terceros.toFixed(2)}</strong></li>
+           <li>Ganancia neta de Bold: <strong>$${base_gravable.toFixed(2)}</strong></li>
+           <li>IVA: <strong>$${iva_resultado.toFixed(2)}</strong></li>
+       </ul>
+   <p>Por lo cual, sobre la ganancia neta de Bold, de tus ventas por medio de (insertar PSE o Nequi), se dedujo el IVA por valor de $${iva_resultado.toFixed(2)}, que es el mismo valor evidencias en la factura de comisión transaccional.</p>
+   <p><strong>Nota:</strong> Los valores antes descritos pertenecen a las ventas hechas por medio de PSE y Nequi, no están incluidas las ventas con tarjeta de crédito o débito.</p>`
+
+   script.innerHTML = messageScript;
+}
 
   function reiniciar_calculadora(){
     location.reload();
