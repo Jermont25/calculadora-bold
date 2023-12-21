@@ -204,14 +204,16 @@ div, #facturacion{
 
 
 #contenedor-respuesta{
-    margin: 20px;
-    width: 90%;
+    margin: 5px 20px 0px 20px;
+    width: 95%;
     display: flex;
     justify-content: flex-start;
     text-align: center;
+    font-size: 15px;
+    white-space: nowrap;
 }
 #contenedor-respuesta h2{
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #contenedor-respuesta p{

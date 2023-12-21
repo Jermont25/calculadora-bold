@@ -40,6 +40,7 @@ let valorIva;
 let pago_terceros;
 let base_gravable;
 let iva_resultado;
+let valor_neto;
 
 
 class Calculadora {
@@ -54,7 +55,7 @@ let tarifa_especial1 = new Calculadora("tarifa-plana1", 2.29);
 let tarifa_especial2 = new Calculadora("tarifa-plana2", 2.19);
 let tarifa_especial3 = new Calculadora("tarifa-plana3", 2.09);
 let tarifa_reterenta = new Calculadora("rete-renta", 1.5);
-let iva = new Calculadora("iva-valor", 0.19);
+/* let iva = new Calculadora("iva-valor", 0.19); */
 
 tarifario.push(tarifa_normal, tarifa_especial1, tarifa_especial2, tarifa_especial3);
 
@@ -215,18 +216,18 @@ function ivaCalculador() {
     ventaspseNequi = document.getElementById("ventas-pseNequi").value;
     valorIva = document.getElementById("valor-iva").value;
     
-    pago_terceros = ventaspseNequi - (valorIva / iva.valor);
-    base_gravable = ventaspseNequi - pago_terceros;
-    iva_resultado = (ventaspseNequi - pago_terceros) * iva.valor;
+    base_gravable = valorIva / 0.19;
+    valor_neto = base_gravable * 1.19;
+    pago_terceros = ventaspseNequi - valor_neto;
+    iva_resultado = base_gravable * 0.19;
 
     let message = `
-      <p>Pago a terceros sobre el valor ingresado: <strong>$${pago_terceros.toFixed(2)}</strong></p>
-      <p>Base gravable, luego del pago a terceros: <strong>$${base_gravable.toFixed(2)}</strong></p>
+      <p>Pago a terceros sobre el valor de la comisión ingresada: <strong>$${pago_terceros.toFixed(2)}</strong></p>
+      <p>Comisión Bold, luego del pago a terceros con IVA incluido: <strong>$${valor_neto.toFixed(2)}</strong></p>
+      <p>Base gravable de la comisión Bold: <strong>$${base_gravable.toFixed(2)}</strong></p>
       <p>IVA de la base gravable: <strong>$${iva_resultado.toFixed(2)}</strong></p>
       <h2>¡IMPORTANTE!</h2>
-      <p>La operación antes realizada solamente encuentra la incognita que se tiene sobre el pago
-      a terceros, de las ventas por PSE y Nequi, despejando la variable X con una formula matemática, pero es
-      importante revisar los valores en los <strong>documentos oficiales</strong> emitidos por <strong>Bold</strong>, antes de enviar respuesta al cliente. </p>`
+      <p>Pendiente</p>`
 
     contenedor_respuesta.innerHTML = message;
 
